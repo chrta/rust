@@ -1273,6 +1273,9 @@ impl Step for Libunwind {
                 cfg.define("__LIBUNWIND_IS_NATIVE_ONLY", None);
                 cfg.define("NDEBUG", None);
             }
+            if self.target.contains("armv7-unknown-linux-musleabihf") {
+                cfg.define("__STDC_FORMAT_MACROS", None);
+            }
             if self.target.contains("windows") {
                 cfg.define("_LIBUNWIND_HIDE_SYMBOLS", "1");
                 cfg.define("_LIBUNWIND_IS_NATIVE_ONLY", "1");
